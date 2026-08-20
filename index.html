@@ -4,52 +4,107 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dilemas Digitais no Brasil</title>
-  <!-- Vínculo com o arquivo CSS externo -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <header>
+    <div class="header-top">
+      <button id="theme-toggle" class="btn-secondary">🌙 Alternar Tema</button>
+    </div>
     <h1>Dilemas Digitais no Brasil</h1>
-    <p>Uma reflexão sobre os desafios, desigualdades e impactos da tecnologia na sociedade brasileira.</p>
+    <p>Uma reflexão sobre os desafios, desigualdades e os impactos da tecnologia na sociedade brasileira.</p>
   </header>
 
-  <main class="container">
-    <article class="card">
+  <!-- FILTROS INTERATIVOS -->
+  <section class="filter-section">
+    <span>Filtrar por tema:</span>
+    <button class="filter-btn active" data-filter="all">Todos</button>
+    <button class="filter-btn" data-filter="sociedade">Sociedade</button>
+    <button class="filter-btn" data-filter="trabalho">Trabalho</button>
+    <button class="filter-btn" data-filter="seguranca">Segurança</button>
+  </section>
+
+  <!-- GRID DE CARDS COM 8 DILEMAS -->
+  <main class="container" id="cards-container">
+    
+    <article class="card" data-category="sociedade">
+      <span class="badge">Sociedade</span>
       <h2>1. O Abismo da Inclusão Digital</h2>
-      <p>Embora o Brasil tenha alta penetração de smartphones, milhões de brasileiros ainda navegam com acesso limitado ("zero rating"), restritos apenas a redes sociais sem acesso pleno à Web para estudos e trabalho.</p>
+      <p>Embora o Brasil tenha alta cobertura de redes móveis, milhões navegam via pacotes restritos ("zero rating"), limitados apenas a redes sociais sem acesso pleno à Web para estudos e pesquisas.</p>
     </article>
 
-    <article class="card">
-      <h2>2. Desinformação e Fake News</h2>
-      <p>O uso massivo de aplicativos de mensagem como principal fonte de informação gera desafios para a democracia e para a saúde pública, exigindo maior letramento midiático da população.</p>
+    <article class="card" data-category="seguranca">
+      <span class="badge">Segurança</span>
+      <h2>2. Desinformação e Infodemia</h2>
+      <p>O uso massivo de aplicativos de mensagem como principal fonte de notícias favorece a proliferação de boatos rápidos, impactando a democracia e a saúde pública.</p>
     </article>
 
-    <article class="card">
-      <h2>3. Proteção de Dados (LGPD)</h2>
-      <p>A aplicação da Lei Geral de Proteção de Dados avança, mas o país ainda enfrenta constantes vazamentos de dados e baixa conscientização dos cidadãos sobre a privacidade de suas informações.</p>
+    <article class="card" data-category="seguranca">
+      <span class="badge">Segurança</span>
+      <h2>3. Proteção de Dados e LGPD</h2>
+      <p>Apesar da consolidação da Lei Geral de Proteção de Dados, o país ainda lida com vazamentos frequentes de dados e baixa conscientização sobre a privacidade no ambiente virtual.</p>
     </article>
 
-    <article class="card">
-      <h2>4. Uberização e Trabalho em Plataformas</h2>
-      <p>A expansão da economia de plataformas trouxe renda rápida para milhões de trabalhadores, mas levantou debates sobre precarização, segurança social e regulação trabalhista no ambiente digital.</p>
+    <article class="card" data-category="trabalho">
+      <span class="badge">Trabalho</span>
+      <h2>4. Uberização e Economia de Gig</h2>
+      <p>A expansão do trabalho gerenciado por algoritmos trouxe geração rápida de renda, mas abriu debates sobre precarização, jornadas longas e ausência de proteção social.</p>
     </article>
+
+    <article class="card" data-category="sociedade">
+      <span class="badge">Sociedade</span>
+      <h2>5. Saúde Mental e Redes Sociais</h2>
+      <p>O Brasil está entre os países com maior tempo diário de telas no mundo. O uso contínuo das plataformas tem sido associado ao aumento de sintomas de ansiedade e comparação social compulsiva.</p>
+    </article>
+
+    <article class="card" data-category="trabalho">
+      <span class="badge">Trabalho</span>
+      <h2>6. Automação e Inteligência Artificial</h2>
+      <p>O avanço veloz da Inteligência Artificial Generativa levanta preocupações sobre a substituição de empregos de média qualificação no mercado nacional antes da requalificação dos profissionais.</p>
+    </article>
+
+    <article class="card" data-category="sociedade">
+      <span class="badge">Sociedade</span>
+      <h2>7. Sobrecarga e Soberania Digital</h2>
+      <p>Dependência tecnológica de infraestruturas e plataformas estrangeiras para serviços essenciais públicos e privados, desafiando a soberania e a segurança digital do país.</p>
+    </article>
+
+    <article class="card" data-category="seguranca">
+      <span class="badge">Segurança</span>
+      <h2>8. Golpes Digitais e Engenharia Social</h2>
+      <p>Com a popularização de pagamentos instantâneos como o Pix, multiplicaram-se fraudes baseadas em engenharia social e clonagem de contas, exigindo constante vigilância dos usuários.</p>
+    </article>
+
   </main>
 
+  <!-- CALCULADORA / CONTADOR INTERATIVO -->
   <section class="interactive-section">
-    <h2>Reflexão Rápida</h2>
-    <p>Você costuma checar a fonte original de notícias recebidas por aplicativos de mensagem antes de repassá-las?</p>
-    <br>
-    <button id="btn-sim">Sempre checo</button>
-    <button id="btn-nao">Às vezes / Raro</button>
-    <div id="quiz-result"></div>
+    <h2>Simulador de Tempo de Tela</h2>
+    <p>Selecione quantas horas por dia você passa conectado ao celular:</p>
+    <div class="range-container">
+      <input type="range" id="time-slider" min="1" max="14" value="5">
+      <span id="slider-value">5 horas/dia</span>
+    </div>
+    <div id="time-impact" class="result-box"></div>
+  </section>
+
+  <!-- QUIZ INTERATIVO -->
+  <section class="interactive-section">
+    <h2>Quiz: Qual seu perfil na era digital?</h2>
+    <p id="quiz-question">1. Você costuma verificar a fonte de links antes de repassá-los em grupos?</p>
+    <div class="quiz-buttons">
+      <button class="btn-quiz" data-value="2">Sempre verifico</button>
+      <button class="btn-quiz" data-value="1">Às vezes</button>
+      <button class="btn-quiz" data-value="0">Raramente</button>
+    </div>
+    <div id="quiz-result" class="result-box hidden"></div>
   </section>
 
   <footer>
-    <p>Projeto Educativo sobre Tecnologias e Sociedade no Brasil.</p>
+    <p>Projeto Educativo sobre Tecnologias, Sociedade e Cultura Digital no Brasil.</p>
   </footer>
 
-  <!-- Vínculo com o arquivo JavaScript externo -->
   <script src="script.js"></script>
 </body>
 </html>
