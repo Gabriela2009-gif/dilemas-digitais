@@ -42,12 +42,12 @@ header p {
   font-size: 1.1rem;
 }
 
-/* GRID DE CONTEÚDO */
+/* GRID DE CONTEUDO */
 .container {
   max-width: 1000px;
   margin: 0<link rel="stylesheet" href="style.css"> auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
   padding: 20px 0;
 }
