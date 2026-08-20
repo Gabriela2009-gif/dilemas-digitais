@@ -45,7 +45,7 @@ header p {
 /* GRID DE CONTEÚDO */
 .container {
   max-width: 1000px;
-  margin: 0 auto;
+  margin: 0<link rel="stylesheet" href="style.css"> auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
