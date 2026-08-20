@@ -1,4 +1,4 @@
-/* VARIÁVEIS DE CORES E TEMA */
+/* VARIÁVEIS DE COR E TEMAS */
 :root {
   --bg: #0f172a;
   --card-bg: #1e293b;
@@ -7,6 +7,18 @@
   --text: #f8fafc;
   --text-muted: #94a3b8;
   --border: #334155;
+  --badge-bg: #0284c7;
+}
+
+body.light-theme {
+  --bg: #f8fafc;
+  --card-bg: #ffffff;
+  --primary: #15803d;
+  --secondary: #0284c7;
+  --text: #0f172a;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  --badge-bg: #38bdf8;
 }
 
 * {
@@ -14,6 +26,7 @@
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 body {
@@ -23,16 +36,21 @@ body {
   padding: 20px;
 }
 
-/* CABEÇALHO */
 header {
   text-align: center;
-  padding: 40px 0;
+  padding: 20px 0 40px;
   max-width: 800px;
   margin: 0 auto;
 }
 
+.header-top {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
 header h1 {
-  font-size: 2.5rem;
+  font-size: 2.4rem;
   color: var(--primary);
   margin-bottom: 10px;
 }
@@ -42,45 +60,86 @@ header p {
   font-size: 1.1rem;
 }
 
-/* GRID DE CONTEÚDO */
+/* FILTROS */
+.filter-section {
+  max-width: 1000px;
+  margin: 0 auto 20px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  background-color: var(--card-bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.filter-btn.active, .filter-btn:hover {
+  background-color: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+/* GRID DE CARDS */
 .container {
   max-width: 1000px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
-  padding: 20px 0;
 }
 
 .card {
   background-color: var(--card-bg);
   border-radius: 8px;
-  padding: 24px;
+  padding: 20px;
   border: 1px solid var(--border);
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.card.hide {
+  display: none;
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
   border-color: var(--secondary);
 }
 
-.card h2 {
-  font-size: 1.4rem;
+.badge {
+  align-self: flex-start;
+  background-color: var(--badge-bg);
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 3px 8px;
+  border-radius: 4px;
   margin-bottom: 12px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.card h2 {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
   color: var(--secondary);
 }
 
 .card p {
-  color: #cbd5e1;
+  color: var(--text-muted);
   font-size: 0.95rem;
-  margin-bottom: 15px;
 }
 
 /* SEÇÃO INTERATIVA */
 .interactive-section {
   max-width: 1000px;
-  margin: 40px auto;
+  margin: 30px auto;
   background-color: var(--card-bg);
   padding: 24px;
   border-radius: 8px;
@@ -88,33 +147,61 @@ header p {
 }
 
 .interactive-section h2 {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   color: var(--primary);
+}
+
+.range-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 15px 0;
+}
+
+input[type="range"] {
+  flex: 1;
+}
+
+.quiz-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  flex-wrap: wrap;
 }
 
 button {
   background-color: var(--primary);
-  color: #000;
+  color: #fff;
   border: none;
-  padding: 10px 20px;
+  padding: 10px 18px;
   font-weight: bold;
   border-radius: 4px;
   cursor: pointer;
-  transition: opacity 0.2s;
-  margin-right: 10px;
 }
 
 button:hover {
   opacity: 0.9;
 }
 
-#quiz-result {
-  margin-top: 15px;
-  font-weight: bold;
-  color: var(--secondary);
+.btn-secondary {
+  background-color: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
 }
 
-/* RODAPÉ */
+.result-box {
+  margin-top: 15px;
+  padding: 12px;
+  background-color: rgba(56, 189, 248, 0.1);
+  border-left: 4px solid var(--secondary);
+  color: var(--text);
+  font-weight: 500;
+}
+
+.hidden {
+  display: none;
+}
+
 footer {
   text-align: center;
   padding: 20px;
